@@ -64,3 +64,49 @@ prevTrack.onclick=()=>{
   music.src=tracks[current];
   music.play();playIcon.innerHTML=pauseSVG;
 };
+/* ===== MOVIMIENTO POR GIROSCOPIO (MÓVIL) ===== */
+if (window.DeviceOrientationEvent) {
+
+  // iOS necesita permiso
+  if (typeof DeviceOrientationEvent.requestPermission === "function") {
+    const askPermission = document.createElement("div");
+    askPermission.innerText = "Toca para activar movimiento";
+    askPermission.style.position = "fixed";
+    askPermission.style.bottom = "20px";
+    askPermission.style.right = "20px";
+    askPermission.style.padding = "10px 14px";
+    askPermission.style.background = "rgba(0,0,0,.6)";
+    askPermission.style.color = "#00eaff";
+    askPermission.style.borderRadius = "12px";
+    askPermission.style.fontSize = "12px";
+    askPermission.style.zIndex = "9999";
+    document.body.appendChild(askPermission);
+
+    askPermission.addEventListener("click", () => {
+      DeviceOrientationEvent.requestPermission().then(response => {
+        if (response === "granted") {
+          window.addEventListener("deviceorientation", handleOrientation);
+          askPermission.remove();
+        }
+      });
+    });
+  } else {
+    // Android
+    window.addEventListener("deviceorientation", handleOrientation);
+  }
+}
+
+function handleOrientation(event) {
+  const beta = event.beta || 0;   // adelante / atrás
+  const gamma = event.gamma || 0; // izquierda / derecha
+
+  const x = Math.max(-20, Math.min(20, gamma));
+  const y = Math.max(-20, Math.min(20, beta - 30));
+
+  card.style.transform = `
+    perspective(1200px)
+    translate(${x}px, ${y}px)
+    rotateY(${x * 0.8}deg)
+    rotateX(${-y * 0.8}deg)
+  `;
+}
