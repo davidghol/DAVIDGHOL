@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>DAVIDGHOL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- PARTICULAS -->
+  <div id="particles-js"></div>
+
+  <!-- GRAIN + SCANLINE -->
+  <div class="grain"></div>
+  <div class="scanline"></div>
+
+  <!-- TARJETA -->
+  <div class="card" id="card">
+
+    <div class="title">
+      <h1 class="title-glitch" data-text="DAVIDGHOL">DAVIDGHOL</h1>
+      <h2>HYPERSERVICES</h2>
+    </div>
+
+    
+
+    <!-- BOTONES CON EMOJIS -->
+    <a class="btn" href="https://hypservicess.com/" target="_blank">
+      🌐 Pagina Web
+    </a>
+
+    <a class="btn" href="https://discord.gg/hypservices" target="_blank">
+      💬 Discord
+    </a>
+
+    <!-- MUSICA (SIN EMOJIS) -->
+    <div class="music-under">
+      <button class="music-btn" id="prevTrack">
+        <svg viewBox="0 0 24 24">
+          <rect x="2" y="4" width="3" height="16"/>
+          <polygon points="20,12 5,20 5,4"/>
+        </svg>
+      </button>
+
+      <button class="music-btn main" id="playPause">
+        <svg id="playIcon" viewBox="0 0 24 24">
+          <polygon points="8,5 20,12 8,19"/>
+        </svg>
+      </button>
+
+      <button class="music-btn" id="nextTrack">
+        <svg viewBox="0 0 24 24">
+          <rect x="19" y="4" width="3" height="16"/>
+          <polygon points="4,12 19,4 19,20"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="spotlight"></div>
+  </div>
+
+  <!-- CONTADOR -->
+  <div class="views-fixed">
+    <span class="eye"></span>
+    <span id="viewCount">0</span>
+  </div>
+
+  <!-- CURSOR -->
+  <div class="custom-cursor" id="customCursor"></div>
+
+  <!-- AUDIO -->
+  <audio id="bgMusic" src="music1.mp3.mp3" preload="auto"></audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
